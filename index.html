@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div id="clock">
+        </div>
+
+        <div id="amPm">
+
+        </div>
+    </div>
+    <script>
+
+// here i create a function for getting time from the Date() class method that name is clock
+
+function clock(){
+    // here i getting hours, minutes, seconds from the Date();
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    // for showing AM or PM
+    let am_pm = "AM"
+// condition for AM or PM and setting the hours value for 12hours  
+      if(hours >11){
+          am_pm = "PM";
+          hours = hours - 12;
+      }
+    //   condition for when 12 - 12 = 0 the it will set 12 for hours value
+      if(hours == 0 ){
+        hours = 12;
+      }
+    //   condition for when minutes are less then 10 here will pre added 0 for organizing the clock and same as seconds and hours 
+      if(minutes < 10)
+      {
+        minutes = "0"+ minutes;
+      }
+      if(seconds <10){
+        seconds ="0"+ seconds;
+      }
+      if(hours <10){
+        hours = "0"+ hours;
+      }
+
+    let time = hours + ":" + minutes+":" + seconds;
+    // here i showing the clock in a div
+document.getElementById("clock").innerHTML = time +" "+ am_pm;
+
+
+}
+// here setInterval will continuous calling the clock function every 1 second letter 
+setInterval(clock,1000)
+    </script>
+</body>
+</html>
